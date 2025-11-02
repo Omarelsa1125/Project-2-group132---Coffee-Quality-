@@ -1,6 +1,6 @@
-cmake_minimum_required(VERSION 3.30)
-project(Project2)
+#cmake_minimum_required(VERSION 3.30)
+#project(Project2)
 
-set(CMAKE_CXX_STANDARD 20)
+#set(CMAKE_CXX_STANDARD 20)
 
-add_executable(Project2 Project-2-group132---Coffee-Quality-/main.cpp)
+add_executable(Project2COP3530 main.cpp functions.cpp)
