@@ -125,8 +125,12 @@ void CoffeeManager::calculateQualityScore(std::vector<Coffee>& data) {
     for (auto& coffee : data) {
         double qualityScoreSum = coffee.aroma + coffee.flavor + coffee.aftertaste +
             coffee.acidity + coffee.body + coffee.balance + coffee.uniformity + coffee.sweet + coffee.moisture;
-        coffee.total = qualityScoreSum/9;
+        coffee.total = qualityScoreSum / 9.0;
     }
+}
+
+std::vector<Coffee>& CoffeeManager::getData() {
+    return data;
 }
 
 

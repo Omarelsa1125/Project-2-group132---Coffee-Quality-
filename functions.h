@@ -27,6 +27,7 @@ private:
   int quickSortHelper(int array[], int low, int high);
 
 public:
+  std::vector<Coffee>& getData();
   void generate(int n);
   std::vector<Coffee> testCoffeeData();
   void calculateQualityScore(std::vector<Coffee>& coffeeData);
