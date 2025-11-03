@@ -1,5 +1,4 @@
-
-// main.cpp  (Jiahao's GUI + generate)
+// main.cpp  (Jiahao's GUI + Omar's Top/Bottom + Merge Sort)
 #include "functions.h"
 #include <QApplication>
 #include <QWidget>
@@ -10,11 +9,11 @@
 #include <QMessageBox>
 #include <QProgressBar>
 #include <QTimer>
+
 using namespace std;
 static CoffeeManager gManager;
 
 class MainMenuWindow;
-class ProgressWindow;
 class StartWindow;
 
 class MainMenuWindow : public QWidget {
@@ -22,7 +21,6 @@ class MainMenuWindow : public QWidget {
 public:
     explicit MainMenuWindow(QWidget *parent = nullptr);
 };
-
 
 class StartWindow : public QWidget {
     Q_OBJECT
@@ -35,7 +33,6 @@ private slots:
     void startGeneration();
     void updateProgress();
 };
-
 
 MainMenuWindow::MainMenuWindow(QWidget *parent) : QWidget(parent) {
     setWindowTitle("Main Menu");
@@ -53,7 +50,40 @@ MainMenuWindow::MainMenuWindow(QWidget *parent) : QWidget(parent) {
     for (const auto& opt : opts) {
         auto *btn = new QPushButton(opt, this);
         layout->addWidget(btn);
-        connect(btn, &QPushButton::clicked, this, [this, opt]() {});
+        connect(btn, &QPushButton::clicked, this, [this, opt]() {
+            if (opt.contains("top")) {
+                auto top10 = gManager.getTopN(10);
+                if (top10.empty()) {
+                    QMessageBox::warning(this, "Error", "No coffee data generated yet!");
+                    return;
+                }
+                QString msg;
+                for (int i = 0; i < top10.size(); i++) {
+                    msg += QString::number(i + 1) + ". "
+                         + QString::fromStdString(top10[i].owner)
+                         + " (" + QString::number(top10[i].total, 'f', 2) + ")\n";
+                }
+                QMessageBox::information(this, "Top 10 Coffees", msg);
+            }
+            else if (opt.contains("bottom")) {
+                auto bottom10 = gManager.getBottomN(10);
+                if (bottom10.empty()) {
+                    QMessageBox::warning(this, "Error", "No coffee data generated yet!");
+                    return;
+                }
+                QString msg;
+                for (int i = 0; i < bottom10.size(); i++) {
+                    msg += QString::number(i + 1) + ". "
+                         + QString::fromStdString(bottom10[i].owner)
+                         + " (" + QString::number(bottom10[i].total, 'f', 2) + ")\n";
+                }
+                QMessageBox::information(this, "Bottom 10 Coffees", msg);
+            }
+            else if (opt.contains("Compute")) {
+                QMessageBox::information(this, "Info",
+                                         "Quality score calculation feature (Anna’s part) coming soon!");
+            }
+        });
     }
 }
 
@@ -76,12 +106,12 @@ void StartWindow::startGeneration() {
     bool click;
     int n = QInputDialog::getInt(this, "Input", "Records (>=100000):",
                                  100000, 100000, 10000000, 1, &click);
-    if (!click) return; // user cancelled
+    if (!click) return; //user cancelled
 
-    // Clear old layout (just remove all widgets)
+
     QLayoutItem *item;
     while ((item = layout()->takeAt(0)) != nullptr) {
-        delete item->widget(); // remove old button/label
+        delete item->widget();
         delete item;
     }
 
@@ -97,14 +127,13 @@ void StartWindow::startGeneration() {
     bar = new QProgressBar(this);
     bar->setRange(0, 100);
     mainLayout->addWidget(bar);
-
     mainLayout->addStretch();
 
     // progress animation
     progress = 0;
     timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, &StartWindow::updateProgress);
-    timer->start(30);                     // ~33 updates per second
+    timer->start(30);
 
     //real generation (runs after a short visual delay)
     QTimer::singleShot(300, this, [this, n]() {
@@ -128,6 +157,5 @@ int main(int argc, char *argv[]) {
     (new StartWindow())->show();
     return app.exec();
 }
+
 #include "main.moc"
-
-
