@@ -25,6 +25,8 @@ class CoffeeManager {
 private:
   vector<Coffee> data;
   int quickSortHelper(std::vector<Coffee>& data, int low, int high);
+  void merge(vector<Coffee>& arr, int left, int mid, int right);
+  void mergeSort(vector<Coffee>& arr, int left, int right);
 
 public:
   std::vector<Coffee>& getData();
@@ -32,6 +34,8 @@ public:
   std::vector<Coffee> testCoffeeData();
   void calculateQualityScore(std::vector<Coffee>& data);
   void quickSort(std::vector<Coffee>& data, int low, int high);
+  vector<Coffee> getTopN(int n);
+  vector<Coffee> getBottomN(int n);
 };
 
 #endif
