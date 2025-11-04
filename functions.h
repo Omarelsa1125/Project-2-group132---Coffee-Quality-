@@ -24,14 +24,14 @@ struct Coffee {
 class CoffeeManager {
 private:
   vector<Coffee> data;
-  int quickSortHelper(int array[], int low, int high);
+  int quickSortHelper(std::vector<Coffee>& data, int low, int high);
 
 public:
   std::vector<Coffee>& getData();
   void generate(int n);
   std::vector<Coffee> testCoffeeData();
-  void calculateQualityScore(std::vector<Coffee>& coffeeData);
-  void quickSort(int array[], int low, int high);
+  void calculateQualityScore(std::vector<Coffee>& data);
+  void quickSort(std::vector<Coffee>& data, int low, int high);
 };
 
 #endif

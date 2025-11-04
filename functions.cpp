@@ -133,6 +133,36 @@ std::vector<Coffee>& CoffeeManager::getData() {
     return data;
 }
 
+int CoffeeManager::quickSortHelper(std::vector<Coffee>& data, int low, int high) {
+    double pivot = data[low].total;
+    int up = low + 1;
+    int down = high;
+    while (up <= down) {
+        while (up <= high && data[up].total > pivot) {
+            up++;
+        }
+        while (data[down].total < pivot) {
+            down--;
+        }
+        if (up < down) {
+            std::swap(data[up], data[down]);
+            up++;
+            down--;
+        }
+    }
+    std::swap(data[low], data[down]);
+    return down;
+}
+
+void CoffeeManager::quickSort(std::vector<Coffee>& data, int low, int high) {
+    if (low < high) {
+        int pivot = quickSortHelper(data, low, high);
+        quickSort(data, low, pivot - 1);
+        quickSort(data, pivot + 1, high);
+    }
+}
+
+
 
 
 
