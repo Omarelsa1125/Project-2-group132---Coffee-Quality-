@@ -5,6 +5,9 @@
 #include <random>
 #include <algorithm>
 #include <cmath>
+#include <ostream>
+#include <sstream>
+#include <iomanip>
 using namespace std;
 
 
@@ -121,14 +124,6 @@ void CoffeeManager::generate(int n) {
     }
 }
 
-void CoffeeManager::calculateQualityScore(std::vector<Coffee>& data) {
-    for (auto& coffee : data) {
-        double qualityScoreSum = coffee.aroma + coffee.flavor + coffee.aftertaste +
-            coffee.acidity + coffee.body + coffee.balance + coffee.uniformity + coffee.sweet + coffee.moisture;
-        coffee.total = qualityScoreSum / 9.0;
-    }
-}
-
 std::vector<Coffee>& CoffeeManager::getData() {
     return data;
 }
@@ -185,34 +180,50 @@ int CoffeeManager::quickSortHelper(std::vector<Coffee>& data, int low, int high)
     double pivot = data[low].total;
     int up = low + 1;
     int down = high;
-    while (up <= down) {
+    while (true) {
         while (up <= high && data[up].total > pivot) {
             up++;
         }
         while (data[down].total < pivot) {
             down--;
         }
-        if (up < down) {
-            std::swap(data[up], data[down]);
-            up++;
-            down--;
+        if (up >= down) {
+            break;
         }
+        std::swap(data[up], data[down]);
+        up++;
+        down--;
     }
     std::swap(data[low], data[down]);
     return down;
 }
 
 void CoffeeManager::quickSort(std::vector<Coffee>& data, int low, int high) {
-    if (low < high) {
-        int pivot = quickSortHelper(data, low, high);
+    if (low >= high) {
+        return;
+    }
+    int pivot = quickSortHelper(data, low, high);
+    if (pivot > low) {
         quickSort(data, low, pivot - 1);
+    }
+    if (pivot < high) {
         quickSort(data, pivot + 1, high);
     }
 }
 
-
-
-
+std::string CoffeeManager::calculateQualityScore(std::vector<Coffee>& data) {
+    if (data.empty()) {
+        return "";
+    } else {
+        std::vector<Coffee> copy = data;
+        quickSort(copy, 0, copy.size() - 1);
+        const Coffee& bestQuality = copy[0];
+        std::stringstream finalOutput;
+        finalOutput << bestQuality.country << " " << bestQuality.region << " " << bestQuality.owner << " " <<
+            std::fixed << std::setprecision(2) << bestQuality.total;
+        return finalOutput.str();
+    }
+}
 
 
 

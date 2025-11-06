@@ -32,10 +32,10 @@ public:
   std::vector<Coffee>& getData();
   void generate(int n);
   std::vector<Coffee> testCoffeeData();
-  void calculateQualityScore(std::vector<Coffee>& data);
   void quickSort(std::vector<Coffee>& data, int low, int high);
   vector<Coffee> getTopN(int n);
   vector<Coffee> getBottomN(int n);
+  std::string calculateQualityScore(std::vector<Coffee>& data);
 };
 
 #endif
