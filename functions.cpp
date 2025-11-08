@@ -176,7 +176,7 @@ vector<Coffee> CoffeeManager::getBottomN(int n){
     return vector<Coffee>(copy.end() - n, copy.end());
 }
 
-int CoffeeManager::quickSortHelper(std::vector<Coffee>& data, int low, int high) {
+int CoffeeManager::quickSortHelper(std::vector<Coffee>& data, int low, int high){
     double pivot = data[low].total;
     int up = low + 1;
     int down = high;
@@ -198,7 +198,7 @@ int CoffeeManager::quickSortHelper(std::vector<Coffee>& data, int low, int high)
     return down;
 }
 
-void CoffeeManager::quickSort(std::vector<Coffee>& data, int low, int high) {
+void CoffeeManager::quickSort(std::vector<Coffee>& data, int low, int high){
     if (low >= high) {
         return;
     }
@@ -211,7 +211,7 @@ void CoffeeManager::quickSort(std::vector<Coffee>& data, int low, int high) {
     }
 }
 
-std::string CoffeeManager::calculateQualityScore(std::vector<Coffee>& data) {
+std::string CoffeeManager::calculateQualityScore(std::vector<Coffee>& data){
     if (data.empty()) {
         return "";
     } else {

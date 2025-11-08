@@ -1,0 +1,5 @@
+/Users/omarelsayed/Coffee Porject/Project-2-group132---Coffee-Quality--2/Project-2-group132---Coffee-Quality-/build/CMakeFiles/CoffeeQuality.dir
+/Users/omarelsayed/Coffee Porject/Project-2-group132---Coffee-Quality--2/Project-2-group132---Coffee-Quality-/build/CMakeFiles/edit_cache.dir
+/Users/omarelsayed/Coffee Porject/Project-2-group132---Coffee-Quality--2/Project-2-group132---Coffee-Quality-/build/CMakeFiles/rebuild_cache.dir
+/Users/omarelsayed/Coffee Porject/Project-2-group132---Coffee-Quality--2/Project-2-group132---Coffee-Quality-/build/CMakeFiles/CoffeeQuality_autogen_timestamp_deps.dir
+/Users/omarelsayed/Coffee Porject/Project-2-group132---Coffee-Quality--2/Project-2-group132---Coffee-Quality-/build/CMakeFiles/CoffeeQuality_autogen.dir

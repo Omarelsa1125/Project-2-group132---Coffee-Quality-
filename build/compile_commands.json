@@ -1,0 +1,20 @@
+[
+{
+  "directory": "/Users/omarelsayed/Coffee Porject/Project-2-group132---Coffee-Quality--2/Project-2-group132---Coffee-Quality-/build",
+  "command": "/usr/bin/c++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -I\"/Users/omarelsayed/Coffee Porject/Project-2-group132---Coffee-Quality--2/Project-2-group132---Coffee-Quality-/build\" -I\"/Users/omarelsayed/Coffee Porject/Project-2-group132---Coffee-Quality--2/Project-2-group132---Coffee-Quality-\" -I\"/Users/omarelsayed/Coffee Porject/Project-2-group132---Coffee-Quality--2/Project-2-group132---Coffee-Quality-/build/CoffeeQuality_autogen/include\" -isystem /opt/homebrew/opt/qt/lib/QtCore.framework/Headers -iframework /opt/homebrew/opt/qt/lib -isystem /opt/homebrew/opt/qt/share/qt/mkspecs/macx-clang -isystem /opt/homebrew/opt/qt/include -isystem /opt/homebrew/opt/qt/lib/QtWidgets.framework/Headers -isystem /opt/homebrew/opt/qt/lib/QtGui.framework/Headers -g -std=gnu++20 -arch arm64 -o CMakeFiles/CoffeeQuality.dir/CoffeeQuality_autogen/mocs_compilation.cpp.o -c \"/Users/omarelsayed/Coffee Porject/Project-2-group132---Coffee-Quality--2/Project-2-group132---Coffee-Quality-/build/CoffeeQuality_autogen/mocs_compilation.cpp\"",
+  "file": "/Users/omarelsayed/Coffee Porject/Project-2-group132---Coffee-Quality--2/Project-2-group132---Coffee-Quality-/build/CoffeeQuality_autogen/mocs_compilation.cpp",
+  "output": "CMakeFiles/CoffeeQuality.dir/CoffeeQuality_autogen/mocs_compilation.cpp.o"
+},
+{
+  "directory": "/Users/omarelsayed/Coffee Porject/Project-2-group132---Coffee-Quality--2/Project-2-group132---Coffee-Quality-/build",
+  "command": "/usr/bin/c++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -I\"/Users/omarelsayed/Coffee Porject/Project-2-group132---Coffee-Quality--2/Project-2-group132---Coffee-Quality-/build\" -I\"/Users/omarelsayed/Coffee Porject/Project-2-group132---Coffee-Quality--2/Project-2-group132---Coffee-Quality-\" -I\"/Users/omarelsayed/Coffee Porject/Project-2-group132---Coffee-Quality--2/Project-2-group132---Coffee-Quality-/build/CoffeeQuality_autogen/include\" -isystem /opt/homebrew/opt/qt/lib/QtCore.framework/Headers -iframework /opt/homebrew/opt/qt/lib -isystem /opt/homebrew/opt/qt/share/qt/mkspecs/macx-clang -isystem /opt/homebrew/opt/qt/include -isystem /opt/homebrew/opt/qt/lib/QtWidgets.framework/Headers -isystem /opt/homebrew/opt/qt/lib/QtGui.framework/Headers -g -std=gnu++20 -arch arm64 -o CMakeFiles/CoffeeQuality.dir/main.cpp.o -c \"/Users/omarelsayed/Coffee Porject/Project-2-group132---Coffee-Quality--2/Project-2-group132---Coffee-Quality-/main.cpp\"",
+  "file": "/Users/omarelsayed/Coffee Porject/Project-2-group132---Coffee-Quality--2/Project-2-group132---Coffee-Quality-/main.cpp",
+  "output": "CMakeFiles/CoffeeQuality.dir/main.cpp.o"
+},
+{
+  "directory": "/Users/omarelsayed/Coffee Porject/Project-2-group132---Coffee-Quality--2/Project-2-group132---Coffee-Quality-/build",
+  "command": "/usr/bin/c++ -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB -I\"/Users/omarelsayed/Coffee Porject/Project-2-group132---Coffee-Quality--2/Project-2-group132---Coffee-Quality-/build\" -I\"/Users/omarelsayed/Coffee Porject/Project-2-group132---Coffee-Quality--2/Project-2-group132---Coffee-Quality-\" -I\"/Users/omarelsayed/Coffee Porject/Project-2-group132---Coffee-Quality--2/Project-2-group132---Coffee-Quality-/build/CoffeeQuality_autogen/include\" -isystem /opt/homebrew/opt/qt/lib/QtCore.framework/Headers -iframework /opt/homebrew/opt/qt/lib -isystem /opt/homebrew/opt/qt/share/qt/mkspecs/macx-clang -isystem /opt/homebrew/opt/qt/include -isystem /opt/homebrew/opt/qt/lib/QtWidgets.framework/Headers -isystem /opt/homebrew/opt/qt/lib/QtGui.framework/Headers -g -std=gnu++20 -arch arm64 -o CMakeFiles/CoffeeQuality.dir/functions.cpp.o -c \"/Users/omarelsayed/Coffee Porject/Project-2-group132---Coffee-Quality--2/Project-2-group132---Coffee-Quality-/functions.cpp\"",
+  "file": "/Users/omarelsayed/Coffee Porject/Project-2-group132---Coffee-Quality--2/Project-2-group132---Coffee-Quality-/functions.cpp",
+  "output": "CMakeFiles/CoffeeQuality.dir/functions.cpp.o"
+}
+]
