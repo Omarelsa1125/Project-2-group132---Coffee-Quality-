@@ -11,4 +11,17 @@ The program uses a **Qt6 GUI** with the following components:
 - **Progress Bar:** Shows algorithm progress with simulated delay.  
 - **Result Display:** Displays total runtime for both algorithms side by side.  
 - **Coffee-Themed Background:** Custom brown tones and `bean.jpg` icon for theme consistency.
-
+  
+If the image doesn’t show up, check your structure:
+Project-2-group132---Coffee-Quality-/
+┣ 📂 icons/
+┃ ┣ bean.jpg
+┃ ┗ gui_preview.png
+┣ 📂 resources/
+┃ ┗ coffee_data.csv
+┣ 📂 build/
+┣ 📜 main.cpp
+┣ 📜 functions.cpp
+┣ 📜 functions.h
+┣ 📜 CMakeLists.txt
+┗ 📜 README.md
