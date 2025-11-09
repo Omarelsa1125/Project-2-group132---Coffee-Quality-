@@ -1,6 +1,9 @@
 // main.cpp — The Ethnic Tree Project
 // Team: Omar Elsayed, Anna Grace Haukoos, Jiahao Liu
 // Comparing Merge Sort and Quick Sort for Coffee Quality Sorting
+// main.cpp — The Ethnic Tree Project
+// Team: Omar Elsayed, Anna Grace Haukoos, Jiahao Liu
+// Comparing Merge Sort and Quick Sort for Coffee Quality Sorting
 #include "functions.h"
 #include <QApplication>
 #include <QWidget>
@@ -20,6 +23,10 @@
 #include <sstream>
 #include <iomanip>
 #include <stdexcept>
+#include <QTableWidget>
+#include <QDialog>
+#include <QHeaderView>
+#include <QScrollBar>
 using namespace std;
 
 static CoffeeManager gManager;
@@ -53,7 +60,7 @@ MainMenuWindow::MainMenuWindow(QWidget *parent) : QWidget(parent){
     setWindowTitle("Coffee Quality Sorter");
     resize(500, 500);
 
-    QPixmap bg("/Users/omarelsayed/Coffee Porject/Project-2-group132---Coffee-Quality--2/Project-2-group132---Coffee-Quality-/icons/bean.jpg");
+    QPixmap bg(":/icons/bean.jpg");
     if (!bg.isNull()){
         QPalette palette;
         palette.setBrush(QPalette::Window, bg.scaled(size(), Qt::KeepAspectRatioByExpanding));
@@ -65,24 +72,24 @@ MainMenuWindow::MainMenuWindow(QWidget *parent) : QWidget(parent){
     layout->setContentsMargins(40,40,40,40);
 
     QLabel *title = new QLabel("<h2>Coffee Quality Sorter</h2>", this);
-title->setAlignment(Qt::AlignCenter);
-title->setStyleSheet(
-    "color: #3e2c27;"
-    "font-weight: 900;"
-    "font-size: 34px;"
-    "letter-spacing: 1px;"
-    "text-shadow: 2px 2px 6px #b68f60;"
-);
-QLabel *subtitle = new QLabel("<i>Compare Merge Sort and Quick Sort on coffee data</i>", this);
-subtitle->setAlignment(Qt::AlignCenter);
-subtitle->setStyleSheet(
-    "color: #3e2c27;"
-    "font-size: 17px;"
-    "font-weight: 600;"
-    "font-style: italic;"
-    "text-shadow: 1px 1px 3px #2e1e14;"
-    "margin-bottom: 15px;"
-);
+    title->setAlignment(Qt::AlignCenter);
+    title->setStyleSheet(
+        "color: #3e2c27;"
+        "font-weight: 900;"
+        "font-size: 34px;"
+        "letter-spacing: 1px;"
+        "text-shadow: 2px 2px 6px #b68f60;"
+    );
+    QLabel *subtitle = new QLabel("<i>Compare Merge Sort and Quick Sort on coffee data</i>", this);
+    subtitle->setAlignment(Qt::AlignCenter);
+    subtitle->setStyleSheet(
+        "color: #3e2c27;"
+        "font-size: 17px;"
+        "font-weight: 600;"
+        "font-style: italic;"
+        "text-shadow: 1px 1px 3px #2e1e14;"
+        "margin-bottom: 15px;"
+    );
 
     layout->addWidget(title, 0, Qt::AlignCenter);
     layout->addWidget(subtitle, 0, Qt::AlignCenter);
@@ -94,7 +101,8 @@ subtitle->setStyleSheet(
         "3. Display Bottom 10 Coffees",
         "4. Sort Using Merge Sort",
         "5. Sort Using Quick Sort",
-        "6. Compare Merge vs Quick Sort"
+        "6. Compare Merge vs Quick Sort",
+        "7. Display All Data"
     };
 
     for (const auto& opt : opts){
@@ -143,13 +151,22 @@ subtitle->setStyleSheet(
                     QMessageBox::warning(this, "Error", "No coffee data generated yet!");
                     return;
                 }
-                QString msg;
+                QDialog *dlg = new QDialog(this);
+                dlg->setWindowTitle("Top 10 Coffees");
+                QVBoxLayout *lay = new QVBoxLayout(dlg);
+                QTableWidget *table = new QTableWidget(dlg);
+                table->setRowCount(top10.size());
+                table->setColumnCount(3);
+                table->setHorizontalHeaderLabels({"Rank", "Owner", "Score"});
                 for (int i = 0; i < top10.size(); i++){
-                    msg += QString::number(i + 1) + ". "
-                         + QString::fromStdString(top10[i].owner)
-                         + " (" + QString::number(top10[i].total, 'f', 2) + ")\n";
+                    table->setItem(i, 0, new QTableWidgetItem(QString::number(i + 1)));
+                    table->setItem(i, 1, new QTableWidgetItem(QString::fromStdString(top10[i].owner)));
+                    table->setItem(i, 2, new QTableWidgetItem(QString::number(top10[i].total, 'f', 2)));
                 }
-                QMessageBox::information(this, "Top 10 Coffees", msg);
+                table->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+                lay->addWidget(table);
+                dlg->resize(400, 300);
+                dlg->exec();
             }
 
             else if (opt.contains("Bottom")){
@@ -158,13 +175,22 @@ subtitle->setStyleSheet(
                     QMessageBox::warning(this, "Error", "No coffee data generated yet!");
                     return;
                 }
-                QString msg;
+                QDialog *dlg = new QDialog(this);
+                dlg->setWindowTitle("Bottom 10 Coffees");
+                QVBoxLayout *lay = new QVBoxLayout(dlg);
+                QTableWidget *table = new QTableWidget(dlg);
+                table->setRowCount(bottom10.size());
+                table->setColumnCount(3);
+                table->setHorizontalHeaderLabels({"Rank", "Owner", "Score"});
                 for (int i = 0; i < bottom10.size(); i++){
-                    msg += QString::number(i + 1) + ". "
-                         + QString::fromStdString(bottom10[i].owner)
-                         + " (" + QString::number(bottom10[i].total, 'f', 2) + ")\n";
+                    table->setItem(i, 0, new QTableWidgetItem(QString::number(i + 1)));
+                    table->setItem(i, 1, new QTableWidgetItem(QString::fromStdString(bottom10[i].owner)));
+                    table->setItem(i, 2, new QTableWidgetItem(QString::number(bottom10[i].total, 'f', 2)));
                 }
-                QMessageBox::information(this, "Bottom 10 Coffees", msg);
+                table->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+                lay->addWidget(table);
+                dlg->resize(400, 300);
+                dlg->exec();
             }
 
             else if (opt.contains("Compute")){
@@ -178,7 +204,35 @@ subtitle->setStyleSheet(
                 QString overallResult = QString::fromStdString(finalResult);
                 QMessageBox::information(this, "Final Quality Score", overallResult);
             }
+            else if (opt.contains("Compare")){
+                if (gManager.getData().empty()){
+                    QMessageBox::warning(this, "Error", "No data generated yet!");
+                    return;
+                }
+                std::vector<Coffee> copy1 = gManager.getData();
+                std::vector<Coffee> copy2 = gManager.getData();
+                CoffeeManager localManager;
 
+                auto start1 = std::chrono::high_resolution_clock::now();
+                localManager.mergeSort(copy1, 0, copy1.size() - 1);
+                auto end1 = std::chrono::high_resolution_clock::now();
+                double mergeMs = std::chrono::duration<double, std::milli>(end1 - start1).count();
+
+                auto start2 = std::chrono::high_resolution_clock::now();
+                localManager.quickSort(copy2, 0, copy2.size() - 1);
+                auto end2 = std::chrono::high_resolution_clock::now();
+                double quickMs = std::chrono::duration<double, std::milli>(end2 - start2).count();
+
+                std::stringstream ss;
+                ss << "Merge Sort: " << std::fixed << std::setprecision(2)
+                   << mergeMs << " ms\n"
+                   << "Quick Sort: " << quickMs << " ms\n\n";
+                ss << "Fastest: " << ((mergeMs < quickMs) ? "Merge Sort" : "Quick Sort") << "\n\n";
+                ss << "Top Coffee (Merge): " << copy1[0].owner << " (" << copy1[0].total << ")\n";
+                ss << "Top Coffee (Quick): " << copy2[0].owner << " (" << copy2[0].total << ")";
+                QMessageBox::information(this, "Sort Comparison Results",
+                                         QString::fromStdString(ss.str()));
+            }
             else if (opt.contains("Merge")){
                 if (gManager.getData().empty()){
                     QMessageBox::warning(this, "Error", "No data generated yet!");
@@ -222,42 +276,50 @@ subtitle->setStyleSheet(
                 QMessageBox::information(this, "Quick Sort Result",
                                          QString::fromStdString(ss.str()));
             }
-
-            else if (opt.contains("Compare")){
+            else if (opt.contains("All Data")){
                 if (gManager.getData().empty()){
                     QMessageBox::warning(this, "Error", "No data generated yet!");
                     return;
                 }
-                std::vector<Coffee> copy1 = gManager.getData();
-                std::vector<Coffee> copy2 = gManager.getData();
-                CoffeeManager localManager;
-
-                auto start1 = std::chrono::high_resolution_clock::now();
-                localManager.mergeSort(copy1, 0, copy1.size() - 1);
-                auto end1 = std::chrono::high_resolution_clock::now();
-                double mergeMs = std::chrono::duration<double, std::milli>(end1 - start1).count();
-
-                auto start2 = std::chrono::high_resolution_clock::now();
-                localManager.quickSort(copy2, 0, copy2.size() - 1);
-                auto end2 = std::chrono::high_resolution_clock::now();
-                double quickMs = std::chrono::duration<double, std::milli>(end2 - start2).count();
-
-                std::stringstream ss;
-                ss << "Merge Sort: " << std::fixed << std::setprecision(2)
-                   << mergeMs << " ms\n"
-                   << "Quick Sort: " << quickMs << " ms\n\n";
-                ss << "Fastest: " << ((mergeMs < quickMs) ? "Merge Sort" : "Quick Sort") << "\n\n";
-                ss << "Top Coffee (Merge): " << copy1[0].owner << " (" << copy1[0].total << ")\n";
-                ss << "Top Coffee (Quick): " << copy2[0].owner << " (" << copy2[0].total << ")";
-                QMessageBox::information(this, "Sort Comparison Results",
-                                         QString::fromStdString(ss.str()));
+                const auto& data = gManager.getData();
+                QDialog *dlg = new QDialog(this);
+                dlg->setWindowTitle("All Coffee Data");
+                QVBoxLayout *lay = new QVBoxLayout(dlg);
+                QTableWidget *table = new QTableWidget(dlg);
+                table->setRowCount(data.size());
+                table->setColumnCount(13);
+                table->setHorizontalHeaderLabels({
+                    "Country", "Region", "Owner", "Aroma", "Flavor", "Aftertaste",
+                    "Acidity", "Body", "Balance", "Uniformity", "Sweet", "Moisture", "Total"
+                });
+                for (size_t row = 0; row < data.size(); ++row) {
+                    const Coffee& c = data[row];
+                    table->setItem(row, 0, new QTableWidgetItem(QString::fromStdString(c.country)));
+                    table->setItem(row, 1, new QTableWidgetItem(QString::fromStdString(c.region)));
+                    table->setItem(row, 2, new QTableWidgetItem(QString::fromStdString(c.owner)));
+                    table->setItem(row, 3, new QTableWidgetItem(QString::number(c.aroma, 'f', 2)));
+                    table->setItem(row, 4, new QTableWidgetItem(QString::number(c.flavor, 'f', 2)));
+                    table->setItem(row, 5, new QTableWidgetItem(QString::number(c.aftertaste, 'f', 2)));
+                    table->setItem(row, 6, new QTableWidgetItem(QString::number(c.acidity, 'f', 2)));
+                    table->setItem(row, 7, new QTableWidgetItem(QString::number(c.body, 'f', 2)));
+                    table->setItem(row, 8, new QTableWidgetItem(QString::number(c.balance, 'f', 2)));
+                    table->setItem(row, 9, new QTableWidgetItem(QString::number(c.uniformity, 'f', 2)));
+                    table->setItem(row, 10, new QTableWidgetItem(QString::number(c.sweet, 'f', 2)));
+                    table->setItem(row, 11, new QTableWidgetItem(QString::number(c.moisture, 'f', 2)));
+                    table->setItem(row, 12, new QTableWidgetItem(QString::number(c.total, 'f', 2)));
+                }
+                table->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+                table->verticalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
+                lay->addWidget(table);
+                dlg->resize(1200, 800);
+                dlg->exec();
             }
         });
     }
 }
 
 void MainMenuWindow::resizeEvent(QResizeEvent* event){
-    QPixmap bg("/Users/omarelsayed/Coffee Porject/Project-2-group132---Coffee-Quality--2/Project-2-group132---Coffee-Quality-/icons/bean.jpg");
+    QPixmap bg(":/icons/bean.jpg");
     if (!bg.isNull()){
         QPalette palette;
         palette.setBrush(QPalette::Window, bg.scaled(size(), Qt::KeepAspectRatioByExpanding));
@@ -270,7 +332,7 @@ StartWindow::StartWindow(QWidget *parent) : QWidget(parent){
     setWindowTitle("Coffee Data Generator");
     resize(400,300);
 
-    QPixmap bg("/Users/omarelsayed/Coffee Porject/Project-2-group132---Coffee-Quality--2/Project-2-group132---Coffee-Quality-/icons/bean.jpg");
+    QPixmap bg(":/icons/bean.jpg");
     if (!bg.isNull()){
         QPalette palette;
         palette.setBrush(QPalette::Window, bg.scaled(size(), Qt::KeepAspectRatioByExpanding));
@@ -327,7 +389,7 @@ void StartWindow::updateProgress(){
 }
 
 void StartWindow::resizeEvent(QResizeEvent* event){
-    QPixmap bg("/Users/omarelsayed/Coffee Porject/Project-2-group132---Coffee-Quality--2/Project-2-group132---Coffee-Quality-/icons/bean.jpg");
+    QPixmap bg(":/icons/bean.jpg");
     if (!bg.isNull()){
         QPalette palette;
         palette.setBrush(QPalette::Window, bg.scaled(size(), Qt::KeepAspectRatioByExpanding));

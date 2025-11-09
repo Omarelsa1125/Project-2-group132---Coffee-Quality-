@@ -1,0 +1,78 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "CoffeeQuality",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "CoffeeQuality::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-CoffeeQuality-Debug-f5b453ff0be4fb7cc120.json",
+					"name" : "CoffeeQuality",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "CoffeeQuality_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-CoffeeQuality_autogen-Debug-bc7737dd1110bafbb599.json",
+					"name" : "CoffeeQuality_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "CoffeeQuality_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-CoffeeQuality_autogen_timestamp_deps-Debug-47698b5c829c4546d55a.json",
+					"name" : "CoffeeQuality_autogen_timestamp_deps",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/Users/jiahaoliu/Library/CloudStorage/OneDrive-UniversityofFlorida/Computer_Science/CLionProject/DSA/Project-2-group132---Coffee-Quality-/cmake-build-debug",
+		"source" : "/Users/jiahaoliu/Library/CloudStorage/OneDrive-UniversityofFlorida/Computer_Science/CLionProject/DSA/Project-2-group132---Coffee-Quality-"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 7
+	}
+}

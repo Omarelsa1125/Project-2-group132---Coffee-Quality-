@@ -1,0 +1,5 @@
+/Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/Applications/CLion.app/Contents/bin/ninja/mac/aarch64/ninja -DCMAKE_CXX_COMPILER=/usr/bin/g++ -G Ninja -S /Users/jiahaoliu/Library/CloudStorage/OneDrive-UniversityofFlorida/Computer_Science/CLionProject/DSA/Project-2-group132---Coffee-Quality- -B /Users/jiahaoliu/Library/CloudStorage/OneDrive-UniversityofFlorida/Computer_Science/CLionProject/DSA/Project-2-group132---Coffee-Quality-/cmake-build-debug
+-- Could NOT find WrapVulkanHeaders (missing: Vulkan_INCLUDE_DIR) 
+-- Configuring done (0.4s)
+-- Generating done (0.1s)
+-- Build files have been written to: /Users/jiahaoliu/Library/CloudStorage/OneDrive-UniversityofFlorida/Computer_Science/CLionProject/DSA/Project-2-group132---Coffee-Quality-/cmake-build-debug

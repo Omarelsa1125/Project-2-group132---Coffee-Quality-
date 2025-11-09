@@ -19,6 +19,12 @@ qt6_add_executable(CoffeeQuality
     functions.h
 )
 
+qt6_add_resources(CoffeeQuality "resources"
+    PREFIX "/"
+    FILES
+        icons/bean.jpg
+)
+
 target_link_libraries(CoffeeQuality
     PRIVATE
     Qt6::Core

@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>icons/bean.jpg</file>
+    </qresource>
+</RCC>

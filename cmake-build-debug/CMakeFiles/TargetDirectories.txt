@@ -1,0 +1,5 @@
+/Users/jiahaoliu/Library/CloudStorage/OneDrive-UniversityofFlorida/Computer_Science/CLionProject/DSA/Project-2-group132---Coffee-Quality-/cmake-build-debug/CMakeFiles/CoffeeQuality.dir
+/Users/jiahaoliu/Library/CloudStorage/OneDrive-UniversityofFlorida/Computer_Science/CLionProject/DSA/Project-2-group132---Coffee-Quality-/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/jiahaoliu/Library/CloudStorage/OneDrive-UniversityofFlorida/Computer_Science/CLionProject/DSA/Project-2-group132---Coffee-Quality-/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/jiahaoliu/Library/CloudStorage/OneDrive-UniversityofFlorida/Computer_Science/CLionProject/DSA/Project-2-group132---Coffee-Quality-/cmake-build-debug/CMakeFiles/CoffeeQuality_autogen_timestamp_deps.dir
+/Users/jiahaoliu/Library/CloudStorage/OneDrive-UniversityofFlorida/Computer_Science/CLionProject/DSA/Project-2-group132---Coffee-Quality-/cmake-build-debug/CMakeFiles/CoffeeQuality_autogen.dir

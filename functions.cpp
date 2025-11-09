@@ -219,7 +219,7 @@ std::string CoffeeManager::calculateQualityScore(std::vector<Coffee>& data){
         quickSort(copy, 0, copy.size() - 1);
         const Coffee& bestQuality = copy[0];
         std::stringstream finalOutput;
-        finalOutput << bestQuality.country << " " << bestQuality.region << " " << bestQuality.owner << " " <<
+        finalOutput << bestQuality.owner << " " <<
             std::fixed << std::setprecision(2) << bestQuality.total;
         return finalOutput.str();
     }
